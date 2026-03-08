@@ -1,24 +1,44 @@
 body {
   font-family: sans-serif;
-  max-width: 600px;
+  max-width: 720px;
   margin: 40px auto;
   padding: 0 16px;
   line-height: 1.6;
 }
 
-h1 {
+h1,
+h2 {
   margin-bottom: 8px;
 }
 
-p {
-  margin-top: 0;
-}
-
-#game {
+section {
   margin-top: 24px;
   padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+p {
+  margin: 8px 0;
+}
+
+label {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+#challenge-settings {
+  margin-top: 12px;
+}
+
+#buttons {
+  margin-top: 16px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
 }
 
 #input {
@@ -27,12 +47,29 @@ p {
   font-size: 18px;
 }
 
-#score {
-  margin-top: 16px;
+#pi-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.digit-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #999;
+  border-radius: 6px;
   font-weight: bold;
+}
+
+.fixed {
+  background-color: #f3f3f3;
 }
 
 #message {
   min-height: 24px;
-  margin-top: 12px;
+  font-weight: bold;
 }
