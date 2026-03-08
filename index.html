@@ -12,47 +12,46 @@
   <h1>PI Memory</h1>
   <p>コメント</p>
 
-  <section id=":controls">
+  <section id="controls">
     <h2>モード選択</h2>
 
-    <label>
-      <input id="mode-practice" type="radio" name="mode" value="practice" checked>
-      練習モード
-    </label>
-    <label>
-      <input id="mode-challenge" type="radio" name="mode" value="challenge">
-      本番モード
-    </label>
+    <div id="mode-row">
+      <label>
+        <input id="mode-practice" type="radio" name="mode" value="practice" checked>
+        練習モード
+      </label>
+      <label>
+        <input id="mode-challenge" type="radio" name="mode" value="challenge">
+        本番モード
+      </label>
 
-    <div id="challenge-settings">
-      <label for="max-mistakes">本番モードのミス許容回数: </label>
-      <input id=":max-mistakes" type="number" min="1" value="3" disabled>
+      <label for="max-mistakes">
+        ミス許容回数 :
+        <input id="max-mistakes" type="number" min="1" value="3" disabled>
+      </label>
     </div>
 
     <div id="buttons">
-      <button id="start button">Start</button>
-      <button id="rest-button">Reset</button>
+      <button id="start-button">Start</button>
+      <button id="reset-button">Reset</button>
     </div>
   </section>
 
   <section id="status">
-    <p id="mode-display">現在のモード: 練習モード</p>
-    <p id="digit-count">到達桁数: 0</p>
-    <p id="mistake-count">ミス回数</p>
+    <p id="mode-display">現在のモード : 練習モード</p>
+    <p id="digit-count">到達桁数 : 0</p>
+    <p id="mistake-count">ミス回数 : 0</p>
     <p id="message"></p>
+  </section>
+
+  <section id="input-area">
+    <label for="input">Enter digit : </label>
+    <input id="input" type="text" maxlength="1" inputmode="numeric" autocomplete="off">
   </section>
 
   <section id="pi-area">
     <h2>入力済の円周率</h2>
-    <div id="pi-display">
-      <span class="digit-box fixed">3</span>
-      <span class="digit-box fixed">.</span>
-    </div>
-  </section>
-
-  <section id="input-area">
-    <label for="input">次の数字を入力: </label>
-    <input id="input" type="text" maxlength="1" inputmode="numeric" autocomplete="off">
+    <div id="pi-display"></div>
   </section>
 
   <script src="app.js"></script>

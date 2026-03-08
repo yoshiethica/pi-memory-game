@@ -73,3 +73,60 @@ button {
   min-height: 24px;
   font-weight: bold;
 }
+
+#mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+#challenge-option {
+  margin-right: 0;
+}
+
+#challenge-settings {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+}
+
+#max-mistakes {
+  width: 64px;
+  padding: 4px 6px;
+}
+
+#pi-display {
+  display: block;
+  margin-top: 12px;
+}
+
+.pi-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.first-line {
+  margin-top: 0;
+}
+
+.digit-box.wrong {
+  color: red;
+  border-color: red;
+}
+
+#last-input-display {
+  min-height: 24px;
+  font-weight: bold;
+}
+
+#last-input-display.correct {
+  color: inherit;
+}
+
+#last-input-display.wrong {
+  color: red;
+}
