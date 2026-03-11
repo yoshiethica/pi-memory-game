@@ -96,3 +96,19 @@ button {
   color: red;
   border-color: red;
 }
+
+#message.error {
+  color: red;
+}
+
+#message.achievement {
+  color: deeppink;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#message.feynman {
+  color: gold;
+  font-weight: bold;
+  font-size: 1.3rem;
+}

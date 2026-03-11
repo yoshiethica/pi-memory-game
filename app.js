@@ -115,19 +115,43 @@ function handleCorrectInput(userInput) {
 
   currentIndex += 1;
   updateStatus();
-
-  message.textContent = "Correct";
-  message.style.color = "";
+  updateAchievementMessage();
 }
 
-function handleIncorrectInput() {
-  mistakes += 1;
-  updateStatus();
+function updateAchievementMessage() {
+  message.classList.remove("error", "achievement", "feynman");
 
+  if (currentIndex === 767) {
+    message.textContent = "and so on!";
+    message.classList.add("feynman");
+    return;
+  }
+
+  if (currentIndex > 0 && currentIndex % 100 === 0) {
+    message.textContent = `${currentIndex} digits reached!`;
+    message.classList.add("achievement");
+    return;
+  }
+
+  message.textContent = "Correct";
+}
+
+
+function handleIncorrectInput(correctDigit, showCorrectAnswer) {
+  mistakes += 1;
   wrongIndexes.add(currentIndex);
 
-  message.textContent = "Incorrect";
-  message.style.color = "red";
+  message.classList.remove("achievement", "feynman");
+  message.classList.add("error");
+
+  if (showCorrectAnswer) {
+    message.textContent = `Wrong! Correct answer: ${correctDigit}`;
+  } else {
+    message.textContent = "Wrong!";
+  }
+
+
+  updateStatus();
 }
 
 function handlePracticeMode(userInput) {
@@ -136,7 +160,7 @@ function handlePracticeMode(userInput) {
   if (userInput === correctDigit) {
     handleCorrectInput(userInput);
   } else {
-    handleIncorrectInput();
+    handleIncorrectInput(correctDigit, true);
   }
 }
 
@@ -147,13 +171,14 @@ function handleChallengeMode(userInput) {
   if (userInput === correctDigit) {
     handleCorrectInput(userInput);
   } else {
-    handleIncorrectInput();
+    handleIncorrectInput(correctDigit, false);
 
     if (mistakes > maxMistakes) {
       gameStarted = false;
       input.disabled = true;
-      message.textContent = `Game Over - ${currentIndex}桁`;
-      message.style.color = "red";
+      message.textContent = `Game Over! - ${currentIndex} digits`;
+      message.classList.remove("error", "achievement", "feynman");
+      return;
     }
   }
 }
