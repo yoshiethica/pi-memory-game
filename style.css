@@ -27,10 +27,6 @@ label {
   margin-right: 12px;
 }
 
-#challenge-settings {
-  margin-top: 12px;
-}
-
 #buttons {
   margin-top: 16px;
 }
@@ -45,13 +41,6 @@ button {
   width: 80px;
   padding: 8px;
   font-size: 18px;
-}
-
-#pi-display {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
 }
 
 .digit-box {
@@ -81,16 +70,6 @@ button {
   gap: 12px;
 }
 
-#challenge-option {
-  margin-right: 0;
-}
-
-#challenge-settings {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 0;
-}
 
 #max-mistakes {
   width: 64px;
@@ -116,17 +95,4 @@ button {
 .digit-box.wrong {
   color: red;
   border-color: red;
-}
-
-#last-input-display {
-  min-height: 24px;
-  font-weight: bold;
-}
-
-#last-input-display.correct {
-  color: inherit;
-}
-
-#last-input-display.wrong {
-  color: red;
 }
