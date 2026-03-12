@@ -121,15 +121,19 @@ function handleCorrectInput(userInput) {
 function updateAchievementMessage() {
   message.classList.remove("error", "achievement", "feynman");
 
-  if (currentIndex === 767) {
-    message.textContent = "and so on!";
+  if (currentIndex === PI_DIGITS.length) {
     message.classList.add("feynman");
+    message.textContent = "and so on!";
+
+    input.disabled = true;
+    input.blur();
+    gameStarted = false;
     return;
   }
 
   if (currentIndex > 0 && currentIndex % 100 === 0) {
-    message.textContent = `${currentIndex} digits reached!`;
     message.classList.add("achievement");
+    message.textContent = `${currentIndex} digits reached!`;
     return;
   }
 
