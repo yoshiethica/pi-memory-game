@@ -129,7 +129,13 @@ button {
   }
 
   section {
-    padding: 12px;
+    padding: 12px 10px;
+  }
+
+  #input {
+    border: 1px solid #999;
+    border-radius: 6px;
+    background-color: #fff;
   }
 
   .digit-box {
