@@ -1,9 +1,8 @@
 body {
   font-family: sans-serif;
-  font-size: 18px;
   line-height: 1.6;
   margin: 0;
-  padding: 16px 32px;
+  padding: 3rem clamp(3rem, 3vw, 5rem);
 }
 
 h1,
@@ -99,7 +98,7 @@ button {
 
 
 #max-mistakes {
-  width: 72px;
+  width: 56px;
   padding: 8px;
   font-size: 16px;
 }
