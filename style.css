@@ -1,26 +1,45 @@
 body {
   font-family: sans-serif;
-  max-width: 720px;
-  margin: 16px auto;
-  padding: 0 16px, 24px;
+  font-size: 18px;
   line-height: 1.6;
+  margin: 0;
+  padding: 16px 32px;
 }
 
 h1,
-h2 {
-  margin-bottom: 8px;
+h2,
+p {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.left-panel,
+.right-panel {
+  min-width: 0;
+}
+
+.mistake-limit-row {
+  margin-left: 24px;
+}
+
+.play-status-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 16px;
 }
 
 section {
-  margin-top: 24px;
-  padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  overflow-wrap: break-word;
-}
-
-p {
-  margin: 8px 0;
+  padding: 16px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -30,8 +49,8 @@ label {
 
 #buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 16px;
 }
 
@@ -42,9 +61,15 @@ button {
 }
 
 #input {
-  width: 96px;
-  padding: 12px;
+  display: block;
+  width: 100%;
+  max-width: 120px;
+  margin-top: 8px;
+  padding: 8px 10px;
   font-size: 18px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 .digit-box {
@@ -63,14 +88,12 @@ button {
 }
 
 #message {
-  min-height: 24px;
-  font-weight: bold;
+  min-height: 1.6em;
 }
 
 #mode-row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -82,8 +105,14 @@ button {
 }
 
 #pi-display {
-  display: block;
+  max-height: 360px;
+  overflow-y: auto;
   margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-height: 120px;
+  overflow-wrap: break-word;
 }
 
 .pi-line {
@@ -118,11 +147,20 @@ button {
   font-size: 1.4rem;
 }
 
+.ghost {
+  opacity: 0.35;
+}
+
 @media (max-width: 600px) {
   body {
-    margin: 12px auto;
-    padding: 0 12px 20px;
+    padding: 8px;
   }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
 
   h1 {
     font-size: 1.5rem;
@@ -130,12 +168,15 @@ button {
 
   section {
     padding: 12px 6px;
+    margin-bottom: 16px;
   }
 
   #input {
-    border: 1px solid #999;
-    border-radius: 6px;
-    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  #buttons {
+    flex-wrap: wrap;
   }
 
   .digit-box {
@@ -143,4 +184,10 @@ button {
     height: 32px;
     font-size: 0.95rem;
   }
+}
+
+button,
+input,
+label {
+  touch-action: manipulation;
 }

@@ -3,57 +3,73 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Pi Memory</title>
+  <title>Pi Memory</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="veiwport" contetn="width-device=width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
   <h1>PI Memory</h1>
-  <p>コメント</p>
+  <p>円周率を覚えるウェブアプリ</p>
 
-  <section id="controls">
-    <h2>モード選択</h2>
+  <div class="layout">
+    <div class="left-panel">
 
-    <div id="mode-row">
-      <label>
-        <input id="mode-practice" type="radio" name="mode" value="practice" checked>
-        練習モード
-      </label>
-      <label>
-        <input id="mode-challenge" type="radio" name="mode" value="challenge">
-        本番モード
-      </label>
+      <section>
+        <h2>Mode</h2>
 
-      <label for="max-mistakes">
-        ミス許容回数 :
-        <input id="max-mistakes" type="number" min="1" value="3" disabled>
-      </label>
+        <div id="mode-row">
+          <label>
+            <input id="mode-practice" type="radio" name="mode" value="practice" checked>
+            Practice Mode
+          </label>
+          <label>
+            <input id="mode-challenge" type="radio" name="mode" value="challenge">
+            Challenge Mode
+          </label>
+
+          <label for="max-mistakes" class="mistake-limit-row">
+            Mistake Limit:
+            <input id="max-mistakes" type="number" min="1" value="5" disabled>
+          </label>
+        </div>
+
+        <div id="buttons">
+          <button id="start-button">Start</button>
+          <button id="reset-button">Reset</button>
+        </div>
+      </section>
+
     </div>
 
-    <div id="buttons">
-      <button id="start-button">Start</button>
-      <button id="reset-button">Reset</button>
+    <div class="right-panel">
+      <section>
+        <div class="play-status-row">
+          <div class="play-box">
+            <h2>Play</h2>
+            <label for="input">Enter digit: </label>
+            <input id="input" type="text" maxlength="1" inputmode="numeric" autocomplete="off">
+          </div>
+          <div class="status-box">
+            <h2>Status</h2>
+            <p id="mode-display">Current Mode: Practice Mode</p>
+            <p id="digit-count">Digits Reached: 0</p>
+            <p id="mistake-count">Mistakes: 0</p>
+            <p id="message"></p>
+          </div>
+      </section>
+
+      <section>
+        <h2>Entered Digits</h2>
+        <div id="pi-display"></div>
+      </section>
+
     </div>
-  </section>
 
-  <section id="status">
-    <p id="mode-display">現在のモード : 練習モード</p>
-    <p id="digit-count">到達桁数 : 0</p>
-    <p id="mistake-count">ミス回数 : 0</p>
-    <p id="message"></p>
-  </section>
 
-  <section id="input-area">
-    <label for="input">Enter digit : </label>
-    <input id="input" type="text" maxlength="1" inputmode="numeric" autocomplete="off">
-  </section>
 
-  <section id="pi-area">
-    <h2>入力済の円周率</h2>
-    <div id="pi-display"></div>
-  </section>
+  </div>
 
   <script src="app.js"></script>
 </body>

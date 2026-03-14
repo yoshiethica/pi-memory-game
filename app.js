@@ -38,10 +38,10 @@ let wrongIndexes = new Set();
 function updateModeUI() {
   if (practiceRadio.checked) {
     maxMistakesInput.disabled = true;
-    modeDisplay.textContent = "現在のモード: 練習モード";
+    modeDisplay.textContent = "Current Mode: Practice Mode";
   } else {
     maxMistakesInput.disabled = false;
-    modeDisplay.textContent = "現在のモード: 本番モード";
+    modeDisplay.textContent = "Current Mode: Challenge Mode";
   }
 }
 
@@ -55,22 +55,32 @@ function renderInitialPiDisplay() {
   `;
 }
 
-function addDigitBox(digit, isWrongPosition = false) {
+function addDigitBox(digit, extraClass = "") {
   const line = piDisplay.querySelector(".digits-line");
   const span = document.createElement("span");
   span.className = "digit-box";
 
-  if (isWrongPosition) {
-    span.classList.add("wrong");
+  if (extraClass) {
+    span.classList.add(extraClass);
   }
 
   span.textContent = digit;
   line.appendChild(span);
 }
 
+function scrollPiDisplayToBottom() {
+  piDisplay.scrollTop = piDisplay.scrollHeight;
+}
+
+function showRemainingDigits() {
+  for (let i = currentIndex; i < PI_DIGITS.length; i++) {
+    addDigitBox(PI_DIGITS[i], "ghost");
+  }
+}
+
 function updateStatus() {
-  digitCount.textContent = `到達桁数: ${currentIndex}`;
-  mistakeCount.textContent = `ミス回数: ${mistakes}`;
+  digitCount.textContent = `Progress: ${currentIndex}`;
+  mistakeCount.textContent = `Mistakes: ${mistakes}`;
 }
 
 function resetGame() {
@@ -110,8 +120,10 @@ function startGame() {
 
 function handleCorrectInput(userInput) {
   const wasWrongBefore = wrongIndexes.has(currentIndex);
+  const extraClass = wasWrongBefore ? "wrong" : "";
 
-  addDigitBox(userInput, wasWrongBefore);
+  addDigitBox(userInput, extraClass);
+  scrollPiDisplayToBottom();
 
   currentIndex += 1;
   updateStatus();
@@ -182,6 +194,7 @@ function handleChallengeMode(userInput) {
       input.disabled = true;
       message.textContent = `Game Over! - ${currentIndex} digits`;
       message.classList.remove("error", "achievement", "feynman");
+      showRemainingDigits();
       return;
     }
   }
